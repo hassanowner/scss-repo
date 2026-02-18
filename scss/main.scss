@@ -1,3 +1,81 @@
+%main-box {
+  background: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
 
-@use "base/variable";
-@use "components/card";
+@mixin arrow($direction) {
+  &::before {
+    content: "";
+    position: absolute;
+    border: 20px solid transparent;
+
+    @if $direction == top {
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-bottom-color: red;
+    }
+
+    @else if $direction == right {
+      right: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-left-color: red;
+    }
+
+    @else if $direction == bottom {
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-top-color: red;
+    }
+
+    @else if $direction == left {
+      left: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-right-color: red;
+    }
+  }
+}
+
+/* الواجهة */
+
+.arrow-top {
+  @extend %main-box;
+  width: 300px;
+  height: 300px;
+  position: relative;
+  margin: 50px auto;
+  @include arrow(top);
+}
+
+.arrow-right {
+  @extend %main-box;
+  width: 300px;
+  height: 300px;
+  position: relative;
+  margin: 50px auto;
+  @include arrow(right);
+}
+
+.arrow-bottom {
+  @extend %main-box;
+  width: 300px;
+  height: 300px;
+  position: relative;
+  margin: 50px auto;
+  @include arrow(bottom);
+}
+
+.arrow-left {
+  @extend %main-box;
+  width: 300px;
+  height: 300px;
+  position: relative;
+  margin: 50px auto;
+  @include arrow(left);
+}
